@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   handleSubmit(event){
-    const uri = `http://localhost:5000/phrase/search/${this.state.value}`
+    const uri = `https://translate-eng.herokuapp.com/phrase/search/${this.state.value}`
   
     axios.get(uri)
       .then(res => {
