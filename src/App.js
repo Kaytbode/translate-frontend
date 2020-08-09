@@ -13,6 +13,7 @@ class App extends Component {
   render(){
     return(
       <div>
+        <h1>English to Yoruba Translator</h1>
         <Search />
         <Create />
       </div>
