@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Navbar } from 'react-bootstrap';
 import Search from './components/searchPhrase';
 import Create from './components/createPhrase';
+import Registration from './components/home';
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,11 +15,16 @@ class App extends Component {
 
   render(){
     return(
-      <div>
-        <h1>English to Yoruba Translator</h1>
-        <Search />
-        <Create />
-      </div>
+      <BrowserRouter>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand>English to Yoruba Translator</Navbar.Brand>
+        </Navbar>
+        <Switch>
+          <Route path='/' exact component={Registration}/>
+          <Route path='/phrase/search' component={Search}/>
+          <Route path='/phrase/create' component={Create}/>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
