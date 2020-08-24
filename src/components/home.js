@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Registration from 'registeration';
+import Registration from './registeration';
 import '../App.css';
 
 class Home extends Component {

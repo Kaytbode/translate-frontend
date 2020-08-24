@@ -17,7 +17,8 @@ class Registration extends Component {
             email:'',
             password:'',
             confirmPassword:'',
-            registerationMsg: ''
+            registerationMsg: '',
+            errorObj:{}
         }
     }
 
@@ -34,7 +35,7 @@ class Registration extends Component {
             confirmPassword
         })
         .then(res => {
-            if (res.data.status === 'created'){
+            if (res.statusText === 'Created'){
                 this.setState({
                     registerationMsg: res.data.message
                 });
@@ -42,12 +43,14 @@ class Registration extends Component {
                 this.props.handleSuccessfulReg();
             }
             console.log(res);
+            console.log(this.state.registerationMsg)
         })
         .catch(error => {
             this.setState({
-                registerationMsg: res.data.message
+                errorObj: error
             });
             console.log(error);
+            console.log(this.state.errorObj);
         })
         event.preventDefault()
     }
@@ -59,10 +62,11 @@ class Registration extends Component {
     }
 
     render(){
-        const { firstName, lastName, email, password, confirmPassword } = this.state;
+        const { firstName, lastName, email, password, confirmPassword, registerationMsg } = this.state;
         return(
           <div>
             <h2>Register</h2>
+            <p>{registerationMsg}</p>
             <Form onSubmit={ this.handleSubmit }>
                 <Form.Group controlId="formBasicText">
                     <Form.Label>First Name</Form.Label>
