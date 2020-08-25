@@ -26,7 +26,14 @@ class Login extends Component {
             password
         })
         .then(res => {
-            console.log(res);
+            if (res.statusText === 'OK'){
+                const { data } = res.data;
+                this.props.handleLogin(data);
+
+                const { user } = this.props;
+            }
+            
+            console.log(user);
         })
         event.preventDefault()
     }

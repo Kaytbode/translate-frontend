@@ -17,6 +17,15 @@ class App extends Component {
       loggedInStatus: 'NOT_LOGGED_IN',
       user: {}
     }
+
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin(data){
+    this.setState({
+      loggedInStatus: 'LOGGED_IN',
+      user: data
+    });
   }
 
   render(){
@@ -33,7 +42,13 @@ class App extends Component {
               <Home {...props} loggedInStatus={this.state.loggedInStatus}/>
             )}
           />
-          <Route path='/login' exact component={Login}/>
+          <Route 
+            exact
+            path='/login'
+            render = { props => (
+              <Login {...props} loggedInStatus={this.state.loggedInStatus} handleLogin={this.handleLogin} user={this.state.user}/>
+            )}
+          />
           <Route path='/phrase/search' exact component={Search}/>
           <Route path='/phrase/create' exact component={Create}/>
         </Switch>
