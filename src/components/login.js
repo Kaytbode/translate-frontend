@@ -31,9 +31,13 @@ class Login extends Component {
                 this.props.handleLogin(data);
 
                 const { user } = this.props;
+
+                if (user.role === 'user'){
+                    this.props.history.push('/search');
+                }
             }
             
-            console.log(user);
+            console.log(this.props.user);
         })
         event.preventDefault()
     }

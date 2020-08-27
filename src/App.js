@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
+import Dashboard from './components/dashboard';
 import Search from './components/searchPhrase';
 import Create from './components/createPhrase';
 import Home from './components/home';
@@ -47,6 +48,13 @@ class App extends Component {
             path='/login'
             render = { props => (
               <Login {...props} loggedInStatus={this.state.loggedInStatus} handleLogin={this.handleLogin} user={this.state.user}/>
+            )}
+          />
+          <Route 
+            exact
+            path='/search'
+            render = { props => (
+              <Dashboard {...props} loggedInStatus={this.state.loggedInStatus}/>
             )}
           />
           <Route path='/phrase/search' exact component={Search}/>

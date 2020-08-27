@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form, Button, InputGroup } from 'react-bootstrap';
 import axios from 'axios';
 
 
@@ -49,12 +50,23 @@ class Search extends Component {
         const { value, yorVid, yorSpo, yorInt, yorExp } = this.state;
         return(
           <div>
-            <form onSubmit = { this.handleSubmit }>
-              <label> How to say  
-              <input name='search_phrase' type='text' value={ value } onChange={ this.handleChange }/>
-              </label>
-              <button type='submit'>Translate to Yoruba</button>
-            </form>
+            <Form onSubmit = { this.handleSubmit }>
+              <Form.Label>How to say</Form.Label>
+              <InputGroup className="mb-3">
+                <Form.Control
+                  name="search_phrase"
+                  placeholder="English Sentence"
+                  aria-label="English Sentence"
+                  aria-describedby="basic-adddon"
+                  onChange={ this.handleChange }
+                  value={ value }
+                  required
+                />
+                <InputGroup.Append>
+                  <Button variant="outline-secondary" type="submit">Translate to Yoruba</Button>
+                </InputGroup.Append>
+              </InputGroup>
+            </Form>
             <iframe
               frameBorder="0"
               width="400"
