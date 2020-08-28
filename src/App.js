@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import Dashboard from './components/dashboard';
+import AdminDashboard from './components/adminDashboard';
 import Search from './components/searchPhrase';
 import Create from './components/createPhrase';
 import Home from './components/home';
@@ -57,8 +58,15 @@ class App extends Component {
               <Dashboard {...props} loggedInStatus={this.state.loggedInStatus}/>
             )}
           />
+          <Route 
+            exact
+            path='/admin/search'
+            render = { props => (
+              <AdminDashboard {...props} loggedInStatus={this.state.loggedInStatus}/>
+            )}
+          />
           <Route path='/phrase/search' exact component={Search}/>
-          <Route path='/phrase/create' exact component={Create}/>
+          <Route path='/admin/create' exact component={Create}/>
         </Switch>
       </BrowserRouter>
     );

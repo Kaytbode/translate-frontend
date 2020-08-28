@@ -33,7 +33,7 @@ class Login extends Component {
                 const { user } = this.props;
 
                 if (user.role === 'user'){
-                    this.props.history.push('/search');
+                    this.props.history.push('/admin/search');
                 }
             }
             
