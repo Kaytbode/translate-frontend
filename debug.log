@@ -19,3 +19,8 @@
 [0824/183906.201:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0825/112232.378:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0825/165748.561:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0829/104900.614:ERROR:http_transport_win.cc(276)] WinHttpSendRequest: The operation completed successfully. (0x0)
+[0829/104951.277:ERROR:process_memory_win.cc(73)] ReadMemory at 0x7fefd697b90 of 28 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[0829/104951.277:WARNING:pe_image_reader.cc(171)] could not read data directory from C:\Windows\system32\SSPICLI.DLL
+[0829/105004.989:ERROR:process_memory_win.cc(73)] ReadMemory at 0x7fefabbd000 of 18446744073709551008 bytes failed: Invalid access to memory location. (0x3E6)
+[0829/105005.049:WARNING:pe_image_reader.cc(171)] could not read data directory from C:\Windows\system32\dhcpcsvc.DLL

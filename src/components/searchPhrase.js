@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, InputGroup } from 'react-bootstrap';
+import { Form, Button, InputGroup, Row, Col, Container, Figure } from 'react-bootstrap';
 import axios from 'axios';
 
 
@@ -13,6 +13,10 @@ class Search extends Component {
           yorInt: '',
           yorSpo: '',
           yorVid: '',
+          explanation: '',
+          intonation: '',
+          spoken:'',
+          video: ''
         };
 
         this.handleChange = this.handleChange.bind(this)
@@ -30,7 +34,12 @@ class Search extends Component {
             yorInt: data[0].yor_intonation,
             yorSpo: data[0].yor_spoken,
             yorVid: data[0].yor_video,
+            explanation: 'Yoruba Explanation',
+            intonation: 'Yoruba Intonation',
+            spoken: 'Yoruba Spoken',
+            video: 'Video expression'
           });
+          console.log( data[0]);
         })
         .catch(err => {
           console.log(err);
@@ -47,9 +56,9 @@ class Search extends Component {
     }
 
     render(){
-        const { value, yorVid, yorSpo, yorInt, yorExp } = this.state;
+        const { value, yorVid, yorSpo, yorInt, yorExp, explanation } = this.state;
         return(
-          <div>
+          <Container>
             <Form onSubmit = { this.handleSubmit }>
               <Form.Label>How to say</Form.Label>
               <InputGroup className="mb-3">
@@ -67,31 +76,47 @@ class Search extends Component {
                 </InputGroup.Append>
               </InputGroup>
             </Form>
-            <iframe
-              frameBorder="0"
-              width="400"
-              height="200"
-              src={yorExp}>
-            </iframe>
-            <iframe
-              frameBorder="0"
-              width="400"
-              height="200"
-              src={yorInt}>
-            </iframe>
-            <iframe
-              frameBorder="0"
-              width="400"
-              height="200"
-              src={yorSpo}>
-            </iframe>
-            <iframe
-              frameBorder="0"
-              width="400"
-              height="200"
-              src={yorVid}>
-            </iframe>
-          </div>  
+            <Row>
+                <Col>
+                  <Figure>
+                    <iframe
+                      frameBorder="0"
+                      src={yorExp}>
+                    </iframe>
+                    <Figure.Caption>{explanation}</Figure.Caption>
+                  </Figure>  
+                </Col>
+                <Col>
+                  <Figure>
+                    <iframe
+                      frameBorder="0"
+                      src={yorInt}>
+                    </iframe>
+                    <Figure.Caption>{intonation}</Figure.Caption>
+                  </Figure>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                  <Figure>
+                    <iframe
+                      frameBorder="0"
+                      src={yorSpo}>
+                    </iframe>
+                    <Figure.Caption>{spoken}</Figure.Caption>
+                  </Figure>
+                </Col>
+                <Col>
+                  <Figure>
+                    <iframe
+                      frameBorder="0"
+                      src={yorVid}>
+                    </iframe>
+                    <Figure.Caption>{video}</Figure.Caption>
+                  </Figure>
+                </Col>
+            </Row>
+          </Container>  
         );
     }
 }
